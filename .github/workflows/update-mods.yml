@@ -2,8 +2,8 @@ name: Update Mods
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 每天執行一次
-  workflow_dispatch:     # 可手動執行
+    - cron: '0 0 * * *'  # 每天執行
+  workflow_dispatch:
 
 jobs:
   update:
@@ -18,8 +18,11 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Install tsunami
-        run: pip install tsunami
+      - name: Install tsunami from GitHub
+        run: |
+          git clone https://github.com/ebkr/tsunami.git
+          cd tsunami
+          pip install .
 
       - name: Run tsunami update
         run: |
