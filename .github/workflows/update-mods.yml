@@ -38,8 +38,7 @@ jobs:
 
       - name: Run thunderstore-cli update
         run: |
-          thunderstore-cli --help  # 測試命令是否可用
-          # 根據文檔調整正確的更新命令，例如: thunderstore-cli mod update
+          thunderstore-cli --help 
 
       - name: Commit updated manifest
         run: |
