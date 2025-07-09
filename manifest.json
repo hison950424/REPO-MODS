@@ -1,7 +1,7 @@
 {
     "name": "Hison_Mods",
     "version_number": "1.0.11",
-    "website_url": "https://github.com/thunderstore-io",
+    "website_url": "https://github.com/hison950424/REPO-MODS",
     "description": "Mainly made for Taiwanese and my friends to basically ensure the stability of the game and enhance the gaming experience!，As long as there are new modules and they are fun, they will be updated!",
     "dependencies": [
         "BepInEx-BepInExPack-5.4.2100",
