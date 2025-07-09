@@ -28,7 +28,7 @@ jobs:
       - name: Install thunderstore-cli from GitHub 
         run: | 
           echo "Attempting to clone with PAT: *** (hidden for security)" 
-          git clone https://${{ secrets.PAT_TOKEN }}@github.com/thunderstore-io/thunderstore-cli.git
+          git clone https://$PAT_TOKEN@github.com/thunderstore-io/thunderstore-cli.git
           cd thunderstore-cli
           cargo build --release
 
@@ -38,7 +38,7 @@ jobs:
 
       - name: Run thunderstore-cli update
         run: |
-          thunderstore-cli --help 
+          thunderstore-cli --help
 
 
       - name: Commit updated manifest
