@@ -27,7 +27,7 @@ jobs:
 
       - name: Install thunderstore-cli (prebuilt)
         run: |
-          wget -O thunderstore-cli.tar.gz https://github.com/thunderstore-io/thunderstore-cli/releases/latest/download/thunderstore-cli-linux-x64.tar.gz
+          wget -O thunderstore-cli.tar.gz https://github.com/thunderstore-io/thunderstore-cli/releases/download/v0.2.4/tcli-0.2.4-linux-x64.tar.gz
           tar -xzvf thunderstore-cli.tar.gz
           sudo mv thunderstore-cli /usr/local/bin/
           rm thunderstore-cli.tar.gz  
