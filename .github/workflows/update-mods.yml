@@ -19,12 +19,13 @@ jobs:
           python-version: 3.x
 
       - name: Install tsunami from GitHub
-        env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+      
         run: |
           git clone https://github.com/ebkr/tsunami.git
           cd tsunami
           pip install .
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
 
       - name: Run tsunami update
         run: |
