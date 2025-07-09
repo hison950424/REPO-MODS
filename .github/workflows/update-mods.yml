@@ -26,7 +26,7 @@ jobs:
           override: true
 
       - name: Download thunderstore-cli
-        run: wget https://github.com/thunderstore-io/thunderstore-cli/releases/download/v0.2.4/tcli-0.2.4-linux-x64.tar.gz
+        run: wget https://github.com/thunderstore-io/thunderstore-cli/releases/download/v0.2.4/tcli-0.2.4-win-x64.tar.gz
 
       - name: Run thunderstore-cli update
         run: |
