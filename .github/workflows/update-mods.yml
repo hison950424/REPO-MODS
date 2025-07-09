@@ -18,20 +18,29 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+
       - name: Install thunderstore-cli from GitHub
         run: |
           echo "Attempting to clone with PAT: *** (hidden for security)"
           git clone https://${{ secrets.PAT_TOKEN }}@github.com/thunderstore-io/thunderstore-cli.git
           cd thunderstore-cli
-          pip install .
+          cargo build --release
+          # 將編譯後的二進位檔移到PATH中
+          sudo cp target/release/thunderstore-cli /usr/local/bin/
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
 
       - name: Run thunderstore-cli update
         run: |
-          # 檢查 thunderstore-cli 的正確命令，根據其文檔調整
-          python -m thunderstore_cli update  # 可能需替換為正確的模組名稱或命令
-          # 或使用: thunderstore-cli update --help 確認語法
+          thunderstore-cli update --help  # 確認命令，根據文檔調整
+          # 根據文檔，可能需要: thunderstore-cli mod update 或其他命令
+          # 目前先測試可用性，需根據你的manifest.json調整
 
       - name: Commit updated manifest
         run: |
