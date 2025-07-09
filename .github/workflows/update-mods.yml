@@ -34,7 +34,7 @@ jobs:
 
       - name: Run thunderstore-cli update
         run: |
-          thunderstore-cli update
+          tcli update
 
       - name: Commit updated manifest
         run: |
