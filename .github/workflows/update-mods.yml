@@ -19,7 +19,7 @@ jobs:
           python-version: 3.x
 
       - name: Install tsunami
-        run: pip install tsunami-modpack
+        run: pip install tsunami
 
       - name: Run tsunami update
         run: |
