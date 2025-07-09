@@ -2,8 +2,8 @@ name: Update Mods
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 每天 00:00 UTC 執行
-  workflow_dispatch:     # 可以手動執行
+    - cron: '0 0 * * *'  # 每天執行一次
+  workflow_dispatch:     # 可手動執行
 
 jobs:
   update:
@@ -23,7 +23,7 @@ jobs:
 
       - name: Run tsunami update
         run: |
-          tsunami update
+          python -m tsunami update
 
       - name: Commit updated manifest
         run: |
