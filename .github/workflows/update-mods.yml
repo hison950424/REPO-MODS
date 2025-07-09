@@ -38,9 +38,9 @@ jobs:
 
       - name: Run thunderstore-cli update
         run: |
-          thunderstore-cli update --help  # 確認命令，根據文檔調整
-          # 根據文檔，可能需要: thunderstore-cli mod update 或其他命令
-          # 目前先測試可用性，需根據你的manifest.json調整
+          thunderstore-cli --help  # 測試命令是否可用
+          # 根據文檔調整正確的更新命令，例如: thunderstore-cli mod update
+          # 目前先測試可用性，需根據manifest.json調整
 
       - name: Commit updated manifest
         run: |
