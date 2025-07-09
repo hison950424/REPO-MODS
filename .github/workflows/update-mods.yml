@@ -25,16 +25,12 @@ jobs:
           profile: minimal
           override: true
 
-      - name: Install thunderstore-cli from GitHub
+      - name: Install thunderstore-cli (prebuilt)
         run: |
-          git clone https://github.com/thunderstore-io/thunderstore-cli.git
-          cd thunderstore-cli
-          cargo build --release
-          if [ ! -f target/release/thunderstore-cli ]; then
-            echo "Error: thunderstore-cli executable not found"
-            exit 1
-          fi
-          sudo cp target/release/thunderstore-cli /usr/local/bin/
+          wget -O thunderstore-cli.tar.gz https://github.com/thunderstore-io/thunderstore-cli/releases/latest/download/thunderstore-cli-linux-x64.tar.gz
+          tar -xzvf thunderstore-cli.tar.gz
+          sudo mv thunderstore-cli /usr/local/bin/
+          rm thunderstore-cli.tar.gz  
 
       - name: Run thunderstore-cli update
         run: |
