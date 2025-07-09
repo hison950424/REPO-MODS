@@ -2,7 +2,7 @@ name: Update Mods
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 每天UTC 00:00執行
+    - cron: '0 0 * * *'  # 每天 UTC 00:00 執行
   workflow_dispatch:     # 允許手動觸發
 
 jobs:
@@ -25,12 +25,16 @@ jobs:
           profile: minimal
           override: true
 
-      - name: Download thunderstore-cli
-        run: wget https://github.com/thunderstore-io/thunderstore-cli/releases/download/0.2.4/tcli-0.2.4-linux-x64.tar.gz
+      - name: Download and Extract thunderstore-cli
+        run: |
+          wget https://github.com/thunderstore-io/thunderstore-cli/releases/download/0.2.4/tcli-0.2.4-linux-x64.tar.gz
+          mkdir tcli
+          tar -xzf tcli-0.2.4-linux-x64.tar.gz -C tcli
+          echo "$GITHUB_WORKSPACE/tcli" >> $GITHUB_PATH
 
       - name: Run thunderstore-cli update
         run: |
-          thunderstore-cli --help 
+          thunderstore-cli update
 
       - name: Commit updated manifest
         run: |
