@@ -11,25 +11,27 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4  # 更新到最新版本
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5  # 更新到最新版本
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.11'  # 指定穩定的Python 3.11版本
+          python-version: '3.11'
 
-      - name: Install tsunami from GitHub
+      - name: Install thunderstore-cli from GitHub
         run: |
           echo "Attempting to clone with PAT: *** (hidden for security)"
-          git clone https://${{ secrets.PAT_TOKEN }}@github.com/ebkr/tsunami.git
-          cd tsunami
+          git clone https://${{ secrets.PAT_TOKEN }}@github.com/thunderstore-io/thunderstore-cli.git
+          cd thunderstore-cli
           pip install .
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
 
-      - name: Run tsunami update
+      - name: Run thunderstore-cli update
         run: |
-          python -m tsunami update
+          # 檢查 thunderstore-cli 的正確命令，根據其文檔調整
+          python -m thunderstore_cli update  # 可能需替換為正確的模組名稱或命令
+          # 或使用: thunderstore-cli update --help 確認語法
 
       - name: Commit updated manifest
         run: |
