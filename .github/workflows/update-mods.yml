@@ -25,22 +25,21 @@ jobs:
           profile: minimal
           override: true
 
-      - name: Install thunderstore-cli from GitHub
-        run: |
-          echo "Attempting to clone with PAT: *** (hidden for security)"
+      - name: Install thunderstore-cli from GitHub 
+        run: | 
+          echo "Attempting to clone with PAT: *** (hidden for security)" 
           git clone https://${{ secrets.PAT_TOKEN }}@github.com/thunderstore-io/thunderstore-cli.git
           cd thunderstore-cli
           cargo build --release
-          # 將編譯後的二進位檔移到PATH中
+
           sudo cp target/release/thunderstore-cli /usr/local/bin/
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
 
       - name: Run thunderstore-cli update
         run: |
-          thunderstore-cli --help  # 測試命令是否可用
-          # 根據文檔調整正確的更新命令，例如: thunderstore-cli mod update
-          # 目前先測試可用性，需根據manifest.json調整
+          thunderstore-cli --help 
+
 
       - name: Commit updated manifest
         run: |
